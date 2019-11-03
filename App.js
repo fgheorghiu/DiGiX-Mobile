@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Text, Alert, Button, TextInput, View, StyleSheet } from 'react-native';
+import { FlatList, Text, Alert, Button, TextInput, View, StyleSheet, Linking } from 'react-native';
 
 export default class App extends Component {
   constructor(props) {
@@ -42,6 +42,7 @@ export default class App extends Component {
           placeholder={'Username'}
           style={styles.input}
         />
+
         <TextInput
           value={this.state.password}
           onChangeText={(password) => this.setState({ password })}
@@ -56,11 +57,10 @@ export default class App extends Component {
           onPress={this.onLogin.bind(this)}
         />
 
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
-          keyExtractor={({id}, index) => id}
-        />
+        <Text style={{color: 'blue'}}
+              onPress={() => Linking.openURL('http://google.com')}>
+          Don't have an account? Register here
+        </Text>
       </View>
     );
   }
